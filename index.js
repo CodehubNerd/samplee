@@ -7,6 +7,7 @@ const takeorders = require('./routes/takeorders.js');
 const productspost = require('./routes/products.js');
 
 const postRoutes = require('./routes/posts.js');
+const authRoutes = require('./routes/auth.js');
 
 const app = express();
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use("/api/posts", postRoutes);
 app.use("/api/takeorders", takeorders);
 app.use("/api/users", getUsers);
 app.use("/api/products", productspost);
+app.use("/api/auth", authRoutes);
 
 
 const port = process.env.PORT || 5000;
