@@ -1,4 +1,4 @@
-const db = require('../db.js');
+const {db} = require('../db.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -25,6 +25,7 @@ exports.register = function(req, res) {
   });
 
 }
+
 
 exports.login = function(req, res) {
 
@@ -53,11 +54,11 @@ exports.login = function(req, res) {
     });   
 }
 
+
 exports.logout = function(req, res) {
     res.clearCookie("access_token",{
         sameSite:"none",
         secure:true
       }).status(200).json("User has been logged out.")
-
 }
 

@@ -1,4 +1,4 @@
-const db = require('../db.js');
+const {db} = require('../db.js');
 
 
 exports.getUsers = function(req, res) {

@@ -8,6 +8,7 @@ const productspost = require('./routes/products.js');
 
 const postRoutes = require('./routes/posts.js');
 const authRoutes = require('./routes/auth.js');
+const adminauths = require('./routes/adminauths.js');
 
 const app = express();
 app.use(express.json());
@@ -32,6 +33,7 @@ app.use("/api/takeorders", takeorders);
 app.use("/api/users", getUsers);
 app.use("/api/products", productspost);
 app.use("/api/auth", authRoutes);
+app.use("/api/adminauth", adminauths);
 
 
 const port = process.env.PORT || 5000;
