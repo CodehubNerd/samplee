@@ -6,6 +6,8 @@ const getUsers = require('./routes/users.js');
 const takeorders = require('./routes/takeorders.js');
 const productspost = require('./routes/products.js');
 
+const postRoutes = require('./routes/posts.js');
+
 const app = express();
 app.use(express.json());
 
@@ -24,7 +26,7 @@ app.get('/', (req, res) => {
   res.send('server is live!')
 })
 
-
+app.use("/api/posts", postRoutes);
 app.use("/api/takeorders", takeorders);
 app.use("/api/users", getUsers);
 app.use("/api/products", productspost);
