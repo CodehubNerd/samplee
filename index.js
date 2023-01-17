@@ -1,5 +1,34 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+
+const getUsers = require('./routes/users.js');
+const takeorders = require('./routes/takeorders.js');
+const productspost = require('./routes/products.js');
+
+const app = express();
+app.use(express.json());
+
+/*middlewares*/
+app.use(cors({
+    origin: ['http://localhost:3000','http://localhost:3002','http://localhost:3001'],
+    methods: ['GET', 'POST'],
+    credentials:true
+}));
+
+app.get('/', (req, res) => {
+  res.sendStatus(200)
+})
+
+
+app.use(cookieParser());
+
+
+
+app.use("/api/takeorders", takeorders);
+app.use("/api/users", getUsers);
+app.use("/api/products", productspost);
+
 
 const port = process.env.PORT || 5000;
 
@@ -9,5 +38,5 @@ app.get('/', (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Server is listening on the port ${port}.`)
+  console.log(`Server is listening on the port http://localhost:5000/ ${port}.`)
 })
